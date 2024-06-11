@@ -54,15 +54,6 @@ const GET_POSTS = gql`
 export default function App() {
   const [getPosts, {loading, error, data}] = useLazyQuery(GET_POSTS);
   const [after, setAfter] = useState("");
-  //     setIsLoading(true);
-  //     const loadedNamesData = await fetchNames(endCursor);
-  //     console.log(loadedNamesData);
-  //     if (loadedNamesData) {
-  //       setNames((names) => [...names, ...loadedNamesData.names]);
-  //       setEndCursor(loadedNamesData.endCursor);
-  //       setIsLoading(false);
-  //     }
-  //   };
   const [allPosts, setAllPosts] = useState([]);
   if (error) return <p>Error : {error.message}</p>;
   return (
