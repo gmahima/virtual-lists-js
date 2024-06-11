@@ -1,10 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import {IconBrandGithubFilled} from "@tabler/icons-react";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-16 p-24">
-      <h1 className="font-bold text-4xl">Learn Virtual Lists</h1>
+      <div className="flex flex-col items-center space-y-2">
+        <h1 className="font-bold text-4xl">Learn Virtual Lists</h1>
+        <a
+          className="text-sm flex space-x-2 items-center font-semibold text-white py-1 px-2 bg-slate-900 hover:bg-slate-700 rounded-lg"
+          href="https://github.com/gmahima/virtual-lists-js"
+        >
+          <span className="">Github</span>
+          <IconBrandGithubFilled color="white" size={16} /> <span>:</span>
+          <code>gmahima/virtual-lists-js</code>
+        </a>
+      </div>
       <div className="grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <Link
           href="/static/normal"
