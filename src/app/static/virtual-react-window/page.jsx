@@ -15,6 +15,9 @@ export default function StaticVirtual() {
   };
   return (
     <div className="h-screen p-16">
+      <h1 className="text-4xl font-semibold text-center p-8">
+        Virtual List: With React Window
+      </h1>
       <div className="bg-white p-4">
         <List
           className="bg-white list-none"

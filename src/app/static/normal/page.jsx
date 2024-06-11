@@ -11,6 +11,7 @@ export default function Static() {
   };
   return (
     <div className="h-screen p-16">
+      <h1 className="text-4xl font-semibold text-center p-8">Normal List</h1>
       <ul className="bg-white overflow-auto h-[500px] p-4">
         {items.map((item) => (
           <Item key={item.name} data={item.name}></Item>

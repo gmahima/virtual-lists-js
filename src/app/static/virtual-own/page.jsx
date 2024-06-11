@@ -13,6 +13,9 @@ export default function Static() {
   };
   return (
     <div className="h-screen p-16">
+      <h1 className="text-4xl font-semibold text-center p-8">
+        Virtual List: Implement from Scratch
+      </h1>
       <List
         overscan={5} //optional, gives a smoother scroll since scrolling is expected
         windowHeight={500}
