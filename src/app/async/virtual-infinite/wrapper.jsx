@@ -38,7 +38,7 @@ export default function ExampleWrapper({
       return (
         <div style={style} className="p-4">
           <span className="block text-lg font-bold text-slate-900">
-            {edge.node.title}
+            {edge.node.id}
           </span>
           <span className="mt-1 text-base leading-7 text-slate-600">by </span>{" "}
           <span className="italic text-slate-900">{edge.node.author.name}</span>

@@ -91,15 +91,17 @@ export default function App() {
         </button>
       </div>
       {(loading || allPosts?.length > 0) && (
-        <ul className="h-[500px] bg-gray-50 p-4 mt-4 rounded overflow-auto">
+        <ul className="h-[400px] bg-gray-50 p-4 mt-4 rounded overflow-auto">
           {allPosts.map((edge) => (
-            <li key={edge.node.title} className="p-4">
+            <li key={edge.node.id} className="p-4">
               <span className="block text-lg font-bold text-slate-900">
                 {edge.node.title}
               </span>
               <span className="mt-1 text-base leading-7 text-slate-600">
                 by{" "}
-                <e className="italic text-slate-900">{edge.node.author.name}</e>
+                <span className="italic text-slate-900">
+                  {edge.node.author.name}
+                </span>
               </span>
               <a
                 href={edge.node.url}
