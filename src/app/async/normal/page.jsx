@@ -1,5 +1,5 @@
 "use client";
-import {ApolloClient, InMemoryCache, gql, useLazyQuery} from "@apollo/client";
+import {gql, useLazyQuery} from "@apollo/client";
 
 import React, {useState} from "react";
 const GET_POSTS = gql`
@@ -10,6 +10,10 @@ const GET_POSTS = gql`
           id
           title
           subtitle
+          url
+          author {
+            name
+          }
         }
       }
       pageInfo {
@@ -63,9 +67,17 @@ export default function App() {
   if (error) return <p>Error : {error.message}</p>;
   return (
     <div className="h-screen p-16">
+      <h1 className="text-4xl font-semibold text-center">Async List: Normal</h1>
+      <h2 className="text-2xl text-center p-4 italic">
+        Loads a list of{" "}
+        <a href="https://hashnode.com/" className="text-blue-700 underline">
+          Hashnode
+        </a>{" "}
+        posts
+      </h2>
       <div className="">
         <button
-          className="bg-white  p-4 rounded shadow"
+          className="text-sm font-semibold text-white py-3 px-4 bg-slate-900 hover:bg-slate-700 rounded-lg"
           onClick={() => {
             console.log("after", after);
             getPosts({variables: {first: 10, after}}).then((data) => {
@@ -78,14 +90,28 @@ export default function App() {
           {allPosts?.length > 0 ? "load more posts" : "load posts"}
         </button>
       </div>
-      <ul className="h-40 bg-gray-50 p-4 mt-4 rounded overflow-auto">
-        {allPosts &&
-          allPosts.length > 0 &&
-          allPosts.map((edge) => (
-            <li key={edge.node.title}>{edge.node.title}</li>
+      {(loading || allPosts?.length > 0) && (
+        <ul className="h-40 bg-gray-50 p-4 mt-4 rounded overflow-auto">
+          {allPosts.map((edge) => (
+            <li key={edge.node.title} className="p-4">
+              <span className="block text-lg font-bold text-slate-900">
+                {edge.node.title}
+              </span>
+              <span className="mt-1 text-base leading-7 text-slate-600">
+                by{" "}
+                <e className="italic text-slate-900">{edge.node.author.name}</e>
+              </span>
+              <a
+                href={edge.node.url}
+                className="ml-2 rounded-lg text-sm font-semibold py-2 px-3 bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15"
+              >
+                Go to post
+              </a>
+            </li>
           ))}
-        {loading && <li>loading</li>}
-      </ul>
+          {loading && <li>loading</li>}
+        </ul>
+      )}
     </div>
   );
 }
