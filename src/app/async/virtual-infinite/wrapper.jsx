@@ -36,9 +36,9 @@ export default function ExampleWrapper({
     } else {
       const edge = items[index];
       return (
-        <div style={style} className="p-4">
+        <div style={style} className="p-4" key={edge.node.id}>
           <span className="block text-lg font-bold text-slate-900">
-            {edge.node.id}
+            {edge.node.title}
           </span>
           <span className="mt-1 text-base leading-7 text-slate-600">by </span>{" "}
           <span className="italic text-slate-900">{edge.node.author.name}</span>
