@@ -6,7 +6,9 @@ import {generateItems} from "../../../utils/generateItems";
 export default function StaticVirtual() {
   const items = generateItems(100000);
   const Item = ({index, style}) => {
+    // TODO: See how this item is rendered
     // gets the index from List component.
+    // need to get and handle the content from here
     let content = items[index].name; // find the content to render
     return (
       <li style={style} className="p-2">

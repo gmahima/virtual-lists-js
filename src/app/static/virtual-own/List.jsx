@@ -1,9 +1,19 @@
 import React, {useEffect, useRef, useState} from "react";
 
 export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
-  // TODO: track the scroll position with scrollTop
-  const startIndex = 0; // TODO: Find the correct start position a/c to scrollTop with padding
-  const endIndex = list.length; // TODO: Find the optimized end position a/c to scrollTop and container height with padding
+  // TODO: track the scroll position with scrollTop: initially, 0
+  // use the onScroll event handler to track it in a state variable
+
+  const startIndex = 0; // TODO: remove this after calculating the new position
+  // TODO: Find the correct start position a/c to scrollTop with padding
+  // 1. scrollTop/itemHeight -> Actual Starting index position
+  // 2. Math.max(0, Math.floor(scrollTop/itemHeight) - overscan) -> Padded, rounded off starting position
+
+  const endIndex = list.length; // TODO: remove this after calculating the new position
+
+  // TODO: Find the optimized end position a/c to scrollTop and container height with padding
+  // 1. End index: (scrollTop + windowHeight)/itemHeight
+  // 2. Math.min(list.length, Math.ceil((scrollTop+windowHeight) / itemHeight ) + overscan)
 
   // generate item rows
   const generateRows = () => {
@@ -16,6 +26,9 @@ export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
     <ul
       className="h-[500px] overflow-y-scroll"
       // TODO: track the scroll top of this container
+      // onScroll={(e) => {
+      //   setScrollTop(e.currentTarget.scrollTop);
+      // }}
     >
       <div
         style={{
