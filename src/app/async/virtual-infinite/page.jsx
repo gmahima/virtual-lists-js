@@ -10,6 +10,10 @@ const GET_POSTS = gql`
           id
           title
           subtitle
+          url
+          author {
+            name
+          }
         }
       }
       pageInfo {
@@ -26,6 +30,7 @@ export default function App() {
   const [allPosts, setAllPosts] = useState([]);
   const [hasNextPage, setHasNextPage] = useState(true);
   const isItemLoaded = (index) => !hasNextPage || index < allPosts.length;
+
   const loadItems = () => {
     console.log("after", after);
     if (hasNextPage) {

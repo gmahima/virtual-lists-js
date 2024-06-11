@@ -32,11 +32,13 @@ export default function ExampleWrapper({
     let content;
     if (!isItemLoaded(index)) {
       content = "Loading...";
+      return <div style={style}>{content}</div>;
     } else {
-      content = items[index].node.title;
+      const edge = items[index];
+      return <div style={style}>{edge.node.title}</div>;
     }
 
-    return <div style={style}>{content}</div>;
+
   };
 
   return (
