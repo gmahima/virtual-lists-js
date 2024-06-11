@@ -91,7 +91,7 @@ export default function App() {
         </button>
       </div>
       {(loading || allPosts?.length > 0) && (
-        <ul className="h-40 bg-gray-50 p-4 mt-4 rounded overflow-auto">
+        <ul className="h-[500px] bg-gray-50 p-4 mt-4 rounded overflow-auto">
           {allPosts.map((edge) => (
             <li key={edge.node.title} className="p-4">
               <span className="block text-lg font-bold text-slate-900">

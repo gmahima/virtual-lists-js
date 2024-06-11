@@ -65,7 +65,7 @@ export default function ExampleWrapper({
         {({onItemsRendered, ref}) => (
           <List
             className="List"
-            height={150}
+            height={500}
             itemCount={itemCount}
             itemSize={88}
             onItemsRendered={onItemsRendered}

@@ -45,6 +45,14 @@ export default function App() {
   if (error) return <p>Error : {error.message}</p>;
   return (
     <div className="h-screen p-16">
+      <h1 className="text-4xl font-semibold text-center">Async List: Normal</h1>
+      <h2 className="text-2xl text-center p-4 italic">
+        Loads a list of{" "}
+        <a href="https://hashnode.com/" className="text-blue-700 underline">
+          Hashnode
+        </a>{" "}
+        posts
+      </h2>
       <Wrapper
         hasNextPage={hasNextPage}
         isNextPageLoading={loading}
