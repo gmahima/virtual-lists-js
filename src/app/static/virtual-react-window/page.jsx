@@ -1,12 +1,13 @@
 "use client";
 import {generateItems} from "../../../utils/generateItems";
-import {useEffect} from "react";
-import {FixedSizeList as List} from "react-window";
+// TODO: import the List component from react-window
+// import {FixedSizeList as List} from "react-window";
 
 export default function StaticVirtual() {
   const items = generateItems(100000);
   const Item = ({index, style}) => {
-    let content = items[index].name;
+    // gets the index from List component.
+    let content = items[index].name; // find the content to render
     return (
       <li style={style} className="p-2">
         {content}
@@ -19,14 +20,15 @@ export default function StaticVirtual() {
         Virtual List: With React Window
       </h1>
       <div className="bg-white p-4">
-        <List
+        {/* TODO: render the list component giving it the required props */}
+        {/* <List
           className="bg-white list-none"
           height={500}
           itemCount={100000}
           itemSize={40}
         >
           {Item}
-        </List>
+        </List> */}
       </div>
     </div>
   );

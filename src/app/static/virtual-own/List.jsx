@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 
-//@ts-ignore
 export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
   // TODO: track the scroll position with scrollTop
   const startIndex = 0; // TODO: Find the correct start position a/c to scrollTop with padding
