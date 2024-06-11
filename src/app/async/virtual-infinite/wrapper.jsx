@@ -40,7 +40,7 @@ export default function ExampleWrapper({
   };
 
   return (
-    <ul className="h-[240px] bg-gray-50 p-4 mt-4 rounded overflow-auto">
+    <ul className="bg-gray-50 p-4 mt-4 rounded overflow-auto">
       <InfiniteLoader
         isItemLoaded={isItemLoaded}
         itemCount={itemCount}
