@@ -1,7 +1,7 @@
 "use client";
 import {useEffect} from "react";
 import {List} from "./List";
-import {generateItems} from "@/utils/generateItems";
+import {generateItems} from "../../../utils/generateItems";
 export default function Static() {
   const items = generateItems(10000);
   const Item = ({children, className, style}) => {
