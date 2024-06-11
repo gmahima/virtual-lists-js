@@ -2,36 +2,34 @@ import React, {useEffect, useRef, useState} from "react";
 
 //@ts-ignore
 export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
-  const [scrollTop, setScrollTop] = useState(0);
-  const startIndex = Math.floor(scrollTop / itemHeight);
-  const paddedStartIndex = Math.max(0, startIndex - overscan);
+  // TODO: track the scroll position with scrollTop
+  const startIndex = 0; // TODO: Find the correct start position a/c to scrollTop with padding
+  const endIndex = list.length; // TODO: Find the optimized end position a/c to scrollTop and container height with padding
 
-  const endIndex = Math.ceil((scrollTop + windowHeight) / itemHeight);
-  const paddedEndIndex = Math.min(list.length, endIndex + overscan);
+  // generate item rows
   const generateRows = () => {
-    console.log(paddedStartIndex);
     return list
-      .slice(paddedStartIndex, paddedEndIndex)
+      .slice(startIndex, endIndex)
       .map((item) => <Item key={item.name}>{item.name}</Item>);
   };
+
   return (
     <ul
       className="h-[500px] overflow-y-scroll"
-      onScroll={(e) => {
-        console.log(e.currentTarget.scrollTop);
-        setScrollTop(e.currentTarget.scrollTop);
-      }}
+      // TODO: track the scroll top of this container
     >
       <div
         style={{
-          height: `${list.length * itemHeight}px`,
+          height: `${list.length * itemHeight}px`, // div to occupy the total original length. This should be consistent, so that the UX is good and not janky.
         }}
       >
+        {/* mobile window div - should move along with the scroll*/}
         <div
           className="bg-white p-4"
-          style={{
-            transform: `translateY(${paddedStartIndex * itemHeight}px)`,
-          }}
+          // TODO: uncomment below code to make the div travel along with the scrolling position
+          // style={{
+          //   transform: `translateY(${startIndex * itemHeight}px)`,
+          // }}
         >
           {generateRows()}
         </div>
