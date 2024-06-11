@@ -16,7 +16,7 @@ export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
   };
   return (
     <ul
-      className="border border-black h-[500px] overflow-y-scroll"
+      className="h-[500px] overflow-y-scroll"
       onScroll={(e) => {
         console.log(e.currentTarget.scrollTop);
         setScrollTop(e.currentTarget.scrollTop);
@@ -28,7 +28,7 @@ export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
         }}
       >
         <div
-          className="bg-pink-400"
+          className="bg-white p-4"
           style={{
             transform: `translateY(${paddedStartIndex * itemHeight}px)`,
           }}
