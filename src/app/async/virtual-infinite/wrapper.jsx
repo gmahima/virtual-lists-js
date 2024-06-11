@@ -51,7 +51,7 @@ export default function ExampleWrapper({
             className="List"
             height={150}
             itemCount={itemCount}
-            itemSize={24}
+            itemSize={88}
             onItemsRendered={onItemsRendered}
             ref={ref}
           >
