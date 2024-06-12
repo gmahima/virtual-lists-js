@@ -38,10 +38,16 @@ export default function ExampleWrapper({
       return (
         <div style={style} className="p-4" key={edge.node.id}>
           <span className="block text-lg font-bold text-slate-900">
-            {edge.node.title}
+            {edge.node.title.length > 100
+              ? edge.node.title.slice(0, 99) + "..."
+              : edge.node.title}
           </span>
           <span className="mt-1 text-base leading-7 text-slate-600">by </span>{" "}
-          <span className="italic text-slate-900">{edge.node.author.name}</span>
+          <span className="italic text-slate-900">
+            {edge.node.author.name.length > 34
+              ? edge.node.author.name.slice(0, 33) + "..."
+              : edge.node.author.name}
+          </span>
           <a
             href={edge.node.url}
             className="ml-2 rounded-lg text-sm font-semibold py-2 px-3 bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15"
