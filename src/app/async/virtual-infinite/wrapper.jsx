@@ -1,18 +1,15 @@
 import React from "react";
+
+// !! import the fixed size list
 import {FixedSizeList as List} from "react-window";
+
+// !! import Infinite Loader
 import InfiniteLoader from "react-window-infinite-loader";
 
 export default function ExampleWrapper({
-  // Are there more items to load?
-  // (This information comes from the most recent API request.)
   hasNextPage,
-
-  // Are we currently loading a page of items?
-  // (This may be an in-flight flag in your Redux store for example.)
   isNextPageLoading,
-
-  // Array of items loaded so far.
-  items,
+  items, // array of items loaded so far
 
   // Callback function responsible for loading the next page of items.
   loadNextPage,
@@ -51,10 +48,9 @@ export default function ExampleWrapper({
         </div>
       );
     }
-
-
   };
 
+  // --------------------------
   return (
     <ul className="bg-gray-50 p-4 mt-4 rounded overflow-auto">
       <InfiniteLoader
@@ -77,4 +73,5 @@ export default function ExampleWrapper({
       </InfiniteLoader>
     </ul>
   );
+  // ------------------------------
 }
