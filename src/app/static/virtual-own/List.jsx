@@ -3,14 +3,20 @@ import React, {useEffect, useRef, useState} from "react";
 export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
   // TODO: track the scroll position with scrollTop: initially, 0
   // use the onScroll event handler to track it in a state variable
-
-  const startIndex = 0; // TODO: remove this after calculating the new position
+  const [scrollTop, setScrollTop] = useState(0);
+  // const startIndex = 0; // TODO: remove this after calculating the new position
   // TODO: Find the correct start position a/c to scrollTop with padding
   // 1. scrollTop/itemHeight -> Actual Starting index position
   // 2. Math.max(0, Math.floor(scrollTop/itemHeight) - overscan) -> Padded, rounded off starting position
 
-  const endIndex = list.length; // TODO: remove this after calculating the new position
+  const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - 5);
 
+  // const endIndex = list.length; // TODO: remove this after calculating the new position
+
+  const endIndex = Math.min(
+    list.length,
+    Math.ceil((scrollTop + windowHeight) / itemHeight) + overscan
+  );
   // TODO: Find the optimized end position a/c to scrollTop and container height with padding
   // 1. End index: (scrollTop + windowHeight)/itemHeight
   // 2. Math.min(list.length, Math.ceil((scrollTop+windowHeight) / itemHeight ) + overscan)
@@ -24,13 +30,15 @@ export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
 
   return (
     <ul
-      className="h-[500px] overflow-y-scroll"
+      className="h-[500px] overflow-y-scroll bg-white"
       // TODO: track the scroll top of this container
-      // onScroll={(e) => {
-      //   setScrollTop(e.currentTarget.scrollTop);
-      // }}
+      onScroll={(e) => {
+        console.log(e.currentTarget.scrollTop);
+        setScrollTop(e.currentTarget.scrollTop);
+      }}
     >
       <div
+        className="bg-white"
         style={{
           height: `${list.length * itemHeight}px`, // div to occupy the total original length. This should be consistent, so that the UX is good and not janky.
         }}
@@ -39,9 +47,9 @@ export const List = ({list, Item, windowHeight, itemHeight, overscan}) => {
         <div
           className="bg-white p-4"
           // TODO: uncomment below code to make the div travel along with the scrolling position
-          // style={{
-          //   transform: `translateY(${startIndex * itemHeight}px)`,
-          // }}
+          style={{
+            transform: `translateY(${startIndex * itemHeight}px)`,
+          }}
         >
           {generateRows()}
         </div>

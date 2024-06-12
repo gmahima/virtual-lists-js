@@ -2,7 +2,7 @@
 import {List} from "./List";
 import {generateItems} from "../../../utils/generateItems";
 export default function Static() {
-  const items = generateItems(100000); // generate item data with the util function
+  const items = generateItems(100); // generate item data with the util function
 
   // Item UI
   const Item = ({children, className, style}) => {

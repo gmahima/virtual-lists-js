@@ -1,7 +1,7 @@
 "use client";
 import {generateItems} from "../../../utils/generateItems";
 // TODO: import the List component from react-window
-// import {FixedSizeList as List} from "react-window";
+import {FixedSizeList as List} from "react-window";
 
 export default function StaticVirtual() {
   const items = generateItems(100000);
@@ -23,14 +23,14 @@ export default function StaticVirtual() {
       </h1>
       <div className="bg-white p-4">
         {/* TODO: render the list component giving it the required props */}
-        {/* <List
+        <List
           className="bg-white list-none"
-          height={500}
+          height={500} // height of window
           itemCount={100000}
           itemSize={40}
         >
           {Item}
-        </List> */}
+        </List>
       </div>
     </div>
   );
